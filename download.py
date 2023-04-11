@@ -6,8 +6,8 @@ import subprocess
 def download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, custom_file_name="", start_from=1):
     headers = {"Content-Type": "video/mp2t"}
 
-    lessons = list(range(start_from, start_from + num_lesson))
-    tests = list(range(start_from, start_from + num_test))
+    lessons = list(range(start_from, 1 + num_lesson))
+    tests = list(range(start_from, 1 + num_test))
     if not os.path.exists(f"{root_dir}"):
         os.mkdir(f"{root_dir}")
     if not os.path.exists(f"{root_dir}/parts"):
@@ -82,60 +82,59 @@ def download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, c
     return
 
 
-def download_kaiwa_socap():
+def download_kaiwa_socap(start_from=1):
     url_lesson = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/SO-CAP/KAIWA-tructuyen-socap-bai-{lesson}.mp4.hls/1080p/index{index}.ts"
     url_test = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/SO-CAP/KAIWA-tructuyen-socap-test-{test}.mp4.hls/1080p/index{index}.ts"
     num_lesson = 16
     num_test = 4
     root_dir = "kaiwa-socap"
-    download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir)
+    download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, start_from=start_from)
     return
 
 
-def download_kaiwa_trungcap():
+def download_kaiwa_trungcap(start_from=1):
     url_lesson = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/TRUNG-CAP/KAIWA-tructuyen-trungcap-bai-{lesson}.mp4.hls/1080p/index{index}.ts"
     url_test = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/TRUNG-CAP/KAIWA-tructuyen-trungcap-test-{test}.mp4.hls/1080p/index{index}.ts"
     num_lesson = 16
     num_test = 4
     root_dir = "kaiwa-trungcap"
-    download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir)
+    download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, start_from=start_from)
     return
 
 
-def download_kaiwa_caocap1():
+def download_kaiwa_caocap1(start_from=1):
     url_lesson = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/CAO-CAP/KAIWA-tructuyen-caocap-bai-{lesson}-phan-01.mp4.hls/1080p/index{index}.ts"
     url_test = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/CAO-CAP/KAIWA-tructuyen-caocap-test-{test}.mp4.hls/1080p/index{index}.ts"
     num_lesson = 12
     num_test = 0
     root_dir = "kaiwa-caocap"
-    download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, custom_file_name="p1")
+    download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, custom_file_name="p1", start_from=start_from)
     return
 
 
-def download_kaiwa_caocap2():
+def download_kaiwa_caocap2(start_from=1):
     url_lesson = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/CAO-CAP/KAIWA-tructuyen-caocap-bai-{lesson}-phan-02.mp4.hls/1080p/index{index}.ts"
     url_test = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/CAO-CAP/KAIWA-tructuyen-caocap-test-{test}.mp4.hls/1080p/index{index}.ts"
     num_lesson = 12
     num_test = 0
     root_dir = "kaiwa-caocap"
-    download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, custom_file_name="p2")
+    download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, custom_file_name="p2", start_from=start_from)
     return
 
 
-def download_kaiwa_caocap():
+def download_kaiwa_caocap(start_from=13):
     url_lesson = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/CAO-CAP/KAIWA-tructuyen-caocap-bai-{lesson}.mp4.hls/1080p/index{index}.ts"
     url_test = "https://jpcdn.riki.edu.vn/Data/upload/files/Video/Riki-Kaiwa-Kaiwatructuyen/CAO-CAP/KAIWA-tructuyen-caocap-test-{test}.mp4.hls/1080p/index{index}.ts"
-    num_lesson = 4
+    num_lesson = 16
     num_test = 4
-    start_from = 13
     root_dir = "kaiwa-caocap"
     download_video_kaiwa(url_lesson, url_test, num_lesson, num_test, root_dir, start_from=start_from)
     return
 
 
 if __name__ == '__main__':
-    download_kaiwa_socap()
-    download_kaiwa_trungcap()
-    download_kaiwa_caocap1()
-    download_kaiwa_caocap2()
-    download_kaiwa_caocap()
+    download_kaiwa_socap(start_from=1)
+    download_kaiwa_trungcap(start_from=1)
+    download_kaiwa_caocap1(start_from=1)
+    download_kaiwa_caocap2(start_from=1)
+    download_kaiwa_caocap(start_from=1)
